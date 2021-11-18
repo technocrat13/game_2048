@@ -1,4 +1,3 @@
-# Project Information
+# 2048 in C
 
-* Add a brief discription about the project
-* Add the information about extra folders or files added
+* command line implimentation of 2048 using C programming
