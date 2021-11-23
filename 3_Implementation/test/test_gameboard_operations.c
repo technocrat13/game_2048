@@ -11,11 +11,13 @@ void test_subtract(void);
 void test_multiply(void);
 void test_divide(void);
 
-intgameboard[4][4] = {
+/*
+int gameboard[4][4] = {
       {00, 00, 00, 00},
       {00, 00, 00, 00}, 
       {00, 00, 00, 00},
       {00, 00, 00, 00}};
+*/
 
 /* Required by the unity test framework */
 void setUp() {}
@@ -57,6 +59,7 @@ void test_setup_gameboard(void)
 //TEST_ASSERT_EQUAL(15000, add(7500, 7500));
 }
 
+/*
 void test_slam_left(void)
 {
   gameboard = {
@@ -66,7 +69,7 @@ void test_slam_left(void)
       {0, 0, 2, 4}};
   TEST_ASSERT_EQUAL(-3, subtract(0, 3));
 
-  /* Dummy fail*/
+
   //TEST_ASSERT_EQUAL(100, subtract(1000, 900));
 }
 
@@ -74,7 +77,7 @@ void test_multiply(void)
 {
   TEST_ASSERT_EQUAL(0, multiply(1, 0));
 
-  /* Dummy fail*/
+  
   TEST_ASSERT_EQUAL(10, multiply(2, 5));
 }
 
@@ -82,6 +85,7 @@ void test_divide(void)
 {
   TEST_ASSERT_EQUAL(0, divide(1, 0));
 
-  /* Dummy fail*/
+
   TEST_ASSERT_EQUAL(1, divide(2, 2));
 }
+*/
