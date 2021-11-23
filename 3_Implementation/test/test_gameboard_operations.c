@@ -11,7 +11,13 @@ void test_slam_left(void);
 void test_compress_left(void);
 void test_transpose(void);
 void test_reverse(void);
-
+void test_raw_move_left(void);
+void test_move_left(void);
+void test_move_up(void);
+void test_move_down(void);
+void test_move_right(void);
+//void test_move_left(void);
+//void test_move_left(void);
 /*
 int gameboard[4][4] = {
       {00, 00, 00, 00},
@@ -37,6 +43,12 @@ int main()
   RUN_TEST(test_compress_left);
   RUN_TEST(test_transpose);
   RUN_TEST(test_reverse);
+  RUN_TEST(test_raw_move_left);
+  RUN_TEST(test_move_left);
+  RUN_TEST(test_move_up);
+  RUN_TEST(test_move_down);
+  RUN_TEST(test_move_right);
+  //RUN_TEST();
 
   /* Close the Unity Test Framework */
   return UNITY_END();
@@ -162,4 +174,114 @@ void test_reverse(void)
 
   TEST_ASSERT_EQUAL(0, result);
 
+}
+
+void test_raw_move_left(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+  raw_move_left(new_gameboard);
+  //print_gameboard();
+
+  int test_gameboard[4][4] = {
+      {4, 0, 0, 0},
+      {16, 0, 0, 0},
+      {2, 0, 0, 0},
+      {8, 4, 0, 0}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_move_left(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+  move_left(new_gameboard);
+  //print_gameboard();
+
+  int test_gameboard[4][4] = {
+      {4, 0, 0, 0},
+      {16, 0, 0, 0},
+      {2, 0, 0, 0},
+      {8, 4, 0, 0}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_move_up(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+  move_up(new_gameboard);
+  //print_gameboard();
+
+  int test_gameboard[4][4] = {
+      {4, 4, 2, 8},
+      {0, 0, 8, 4},
+      {0, 0, 4, 0},
+      {0, 0, 0, 0}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_move_right(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+  move_right(new_gameboard);
+  //print_gameboard();
+
+  int test_gameboard[4][4] = {
+      {0, 0, 0, 4},
+      {0, 0, 0, 16},
+      {0, 0, 0, 2},
+      {0, 0, 4, 8}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_move_down(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 4},
+      {0, 0, 8, 4},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+  move_down(new_gameboard);
+  //print_gameboard();
+
+  int test_gameboard[4][4] = {
+      {0, 0, 0, 0},
+      {0, 0, 2, 0},
+      {0, 0, 8, 4},
+      {4, 4, 4, 8}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
 }

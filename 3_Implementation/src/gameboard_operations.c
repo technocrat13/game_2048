@@ -53,12 +53,15 @@ void pick_random_tile(int gameboard[n][n])
                 empty_places[count] = interim;
                 ++count;
             }
+            /*
             if(gameboard[j][i] == 2048)
             {
                 print_gameboard(gameboard);
                 printf("wow you win!!1!\nending game..\n");
                 exit(0);
+            
             }
+            */
         }
     }
 
@@ -77,13 +80,17 @@ void pick_random_tile(int gameboard[n][n])
         }
 
     } 
-    free(empty_places);
+    
 
+    free(empty_places);
+    
     //if (rand() % 4 == 0)
     //{
     //    pick_random_tile();
     //}
+    
 }
+
 
 void slam_left(int gameboard[n][n])
 {
