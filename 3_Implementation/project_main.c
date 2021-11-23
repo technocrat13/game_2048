@@ -1,11 +1,11 @@
-#include <calculator_operations.h>
+#include <gameboard_operations.h>
 
 /* Status of the operation requested */
 #define VALID   (1)
 #define INVALID (0)
 
 /* Calculator operation requested by user*/
-unsigned int calculator_operation = 0;
+unsigned int calculator_operation = 0   ;
 
 /* Operands on which calculation is performed */
 int calculator_operand1 = 0;
