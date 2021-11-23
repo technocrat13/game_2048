@@ -31,7 +31,7 @@ void pick_random_tile()
 {
     //int empty[n][2];
 
-    empty_places = (int*) malloc(n * n * sizeof(pos));
+    pos_t* empty_places = (pos_t*) malloc(n * n * sizeof(pos_t));
     if (empty_places == NULL) {
         printf("Memory not allocated.\n");
         exit(0);
@@ -53,6 +53,9 @@ void pick_random_tile()
             }
         }
     }
+
+    if(count != 0)
+    {
     int place = rand() % count;
     //int i = rand() % 4;
 
@@ -64,10 +67,14 @@ void pick_random_tile()
         {
             gameboard[empty_places[place].y][empty_places[place].x] = 2;
         }
-    if (rand() % 4 == 0)
-    {
-        pick_random_tile();
-    }
+
+    } 
+    free(empty_places);
+
+    //if (rand() % 4 == 0)
+    //{
+    //    pick_random_tile();
+    //}
 }
 
 void slam_left()
@@ -172,7 +179,8 @@ void game_loop()
     {
         //print_gameboard();
         char c;
-        c = getc(stdin);
+        printf("[wasd]: ");
+        scanf(" %c", &c);
 
         switch (c)
         {
@@ -208,29 +216,10 @@ int main()
     printf("\n****2048****\n");
 
     setup_gameboard();
+    
+    pick_random_tile();
     print_gameboard();
-    pick_random_tile();
-    pick_random_tile();
-    print_gameboard();
-    slam_left();
-    print_gameboard();
-    compress_left();
-    print_gameboard();
-    slam_left();
-    print_gameboard();
-    pick_random_tile();
-    pick_random_tile();
-    pick_random_tile();
-    pick_random_tile();
 
-    print_gameboard();
-    printf("transpose: ");
-    transpose();
-
-    print_gameboard();
-    printf("reverse: ");
-    reverse();
-    print_gameboard();
 
     game_loop();
 }
