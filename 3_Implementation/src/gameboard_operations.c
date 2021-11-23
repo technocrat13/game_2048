@@ -51,6 +51,12 @@ void pick_random_tile()
                 empty_places[count] = interim;
                 ++count;
             }
+            if(gameboard[j][i] == 2048)
+            {
+                print_gameboard();
+                printf("wow you win!!1!\nending game..\n");
+                exit(0);
+            }
         }
     }
 
