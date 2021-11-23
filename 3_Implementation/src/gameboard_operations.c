@@ -45,26 +45,26 @@ void pick_random_tile()
         {
             if(gameboard[j][i] == 0)
             {
-                pos.x = i;
-                pos.y = j;
-                empty_places[count] = pos;
+                pos_t interim = {j, i};
+                //interim.x = i;
+                //interim.y = j;
+                empty_places[count] = interim;
+                ++count;
             }
         }
     }
-    int j = rand() % 4;
-    int i = rand() % 4;
-    if (gameboard[j][i] == 0)
-    {
+    int place = rand() % count;
+    //int i = rand() % 4;
+
         if (rand() % 3 == 0)
         {
-            gameboard[j][i] = 4;
+            gameboard[empty_places[place].y][empty_places[place].x] = 4;
         }
         else
         {
-            gameboard[j][i] = 2;
+            gameboard[empty_places[place].y][empty_places[place].x] = 2;
         }
-    }
-    else
+    if (rand() % 4 == 0)
     {
         pick_random_tile();
     }

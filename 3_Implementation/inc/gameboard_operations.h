@@ -54,7 +54,7 @@ typedef struct pos
 {
     int y;
     int x;
-}pos;
+}pos_t;
 
 
 
