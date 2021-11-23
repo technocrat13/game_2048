@@ -7,7 +7,7 @@
 [![Unit testing](https://github.com/technocrat13/game_2048/actions/workflows/unit-test.yml/badge.svg)](https://github.com/technocrat13/game_2048/actions/workflows/unit-test.yml)
 [![Valgrind](https://github.com/technocrat13/game_2048/actions/workflows/valgrind.yml/badge.svg)](https://github.com/technocrat13/game_2048/actions/workflows/valgrind.yml)
 
-	```bash
-	make
-	make run
-	```
+```bash
+make
+make run
+```
