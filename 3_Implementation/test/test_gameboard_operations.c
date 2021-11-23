@@ -162,5 +162,4 @@ void test_reverse(void)
 
   TEST_ASSERT_EQUAL(0, result);
 
-
 }
