@@ -6,10 +6,11 @@
 #define PROJECT_NAME "2048"
 
 /* Prototypes for all the test functions */
-void test_add(void);
-void test_subtract(void);
-void test_multiply(void);
-void test_divide(void);
+void test_setup_gameboard(void);
+void test_slam_left(void);
+void test_compress_left(void);
+void test_transpose(void);
+void test_reverse(void);
 
 /*
 int gameboard[4][4] = {
@@ -32,9 +33,10 @@ int main()
 
   /* Run Test functions */
   RUN_TEST(test_setup_gameboard);
-  //RUN_TEST(test_subtract);
-  //RUN_TEST(test_multiply);
-  //RUN_TEST(test_divide);
+  RUN_TEST(test_slam_left);
+  RUN_TEST(test_compress_left);
+  RUN_TEST(test_transpose);
+  RUN_TEST(test_reverse);
 
   /* Close the Unity Test Framework */
   return UNITY_END();
@@ -45,47 +47,120 @@ int main()
 /* Write all the test functions */
 void test_setup_gameboard(void)
 {
-  setup_gameboard();
+  int new_gameboard[n][n];
+  setup_gameboard(new_gameboard);
 
   int test_gameboard[4][4] = {
-      {00, 00, 00, 00},
-      {00, 00, 00, 00}, 
-      {00, 00, 00, 00},
-      {00, 00, 00, 00}};
+      {0, 0, 0, 0},
+      {0, 0, 0, 0}, 
+      {0, 0, 0, 0},
+      {0, 0, 0, 0}};
 
-  TEST_ASSERT_EQUAL(test_gameboard, gameboard);
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
 
 /* Dummy fail*/
 //TEST_ASSERT_EQUAL(15000, add(7500, 7500));
 }
 
-/*
+
 void test_slam_left(void)
 {
-  gameboard = {
+  int new_gameboard[4][4] = {
       {2, 0, 2, 0},
       {0, 0, 0, 8},
       {2, 0, 0, 0},
       {0, 0, 2, 4}};
-  TEST_ASSERT_EQUAL(-3, subtract(0, 3));
 
 
-  //TEST_ASSERT_EQUAL(100, subtract(1000, 900));
-}
-
-void test_multiply(void)
-{
-  TEST_ASSERT_EQUAL(0, multiply(1, 0));
-
+  slam_left(new_gameboard);
+  //print_gameboard();
   
-  TEST_ASSERT_EQUAL(10, multiply(2, 5));
+  int test_gameboard[4][4] = {
+      {2, 2, 0, 0},
+      {8, 0, 0, 0},
+      {2, 0, 0, 0},
+      {2, 4, 0, 0}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+
 }
 
-void test_divide(void)
+
+void test_compress_left(void)
 {
-  TEST_ASSERT_EQUAL(0, divide(1, 0));
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
 
 
-  TEST_ASSERT_EQUAL(1, divide(2, 2));
+  compress_left(new_gameboard);
+  //print_gameboard();
+  
+  int test_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 16, 0},
+      {2, 0, 0, 0},
+      {0, 8, 0, 4}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
 }
-*/
+
+
+
+void test_transpose(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+
+  transpose(new_gameboard);
+  //print_gameboard();
+  
+  int test_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 0, 4},
+      {2, 8, 0, 4},
+      {0, 8, 0, 4}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+
+
+}
+
+void test_reverse(void)
+{
+  int new_gameboard[4][4] = {
+      {2, 0, 2, 0},
+      {0, 0, 8, 8},
+      {2, 0, 0, 0},
+      {0, 4, 4, 4}};
+
+
+  reverse(new_gameboard);
+  //print_gameboard();
+  
+  int test_gameboard[4][4] = {
+      {0, 2, 0, 2},
+      {8, 8, 0, 0},
+      {0, 0, 0, 2},
+      {4, 4, 4, 0}};
+
+  int result = memcmp(new_gameboard, test_gameboard, 16);
+
+  TEST_ASSERT_EQUAL(0, result);
+
+
+}

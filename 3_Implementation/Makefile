@@ -5,7 +5,8 @@ PROJECT_NAME = 2048
 BUILD = build
 
 # All source code files
-SRC = src/gameboard_operations.c
+SRC = project_main.c\
+src/gameboard_operations.c
 
 # All test source files
 TEST_SRC = src/gameboard_operations.c\
@@ -47,7 +48,7 @@ doc:
 
 # Build and run the unit tests
 test:$(BUILD)
-	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
+	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
 	./$(TEST_OUTPUT)
 
 analyze: test memcheck staticcheck coverage sanitize_check

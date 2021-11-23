@@ -18,36 +18,36 @@
 
 int gameboard[n][n];
 
-void setup_gameboard();
+void setup_gameboard(int gameboard[n][n]);
 //initilize with 0s
 
-void slam_left();
+void slam_left(int gameboard[n][n]);
 //join move terms left 3 times till there is no coliisons
 
-void compress_left();
+void compress_left(int gameboard[n][n]);
 //if two of them are the same join and leave the last right one empty
 
-void print_gameboard();
+void print_gameboard(int gameboard[n][n]);
 //print in pretty format
 
-void transpose();
+void transpose(int gameboard[n][n]);
 //transpose of 2d array
 
-void reverse();
+void reverse(int gameboard[n][n]);
 //reverse the 2d array
 
-void pick_random_tile();
+void pick_random_tile(int gameboard[n][n]);
 //place random 
 
-void raw_move_left();
+void raw_move_left(int gameboard[n][n]);
 
-void move_left();
+void move_left(int gameboard[n][n]);
 
-void move_up();
+void move_up(int gameboard[n][n]);
 
-void move_down();
+void move_down(int gameboard[n][n]);
 
-void move_right();
+void move_right(int gameboard[n][n]);
 
 void game_loop();
 

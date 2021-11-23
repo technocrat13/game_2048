@@ -1,6 +1,8 @@
 #include "gameboard_operations.h"
 
-void setup_gameboard()
+
+
+void setup_gameboard(int gameboard[n][n])
 {
     for (int j = 0; j < n; j++)
     {
@@ -11,7 +13,7 @@ void setup_gameboard()
     }
 }
 
-void print_gameboard()
+void print_gameboard(int gameboard[n][n])
 {
     printf("\n");
     for (int j = 0; j < n; j++)
@@ -27,7 +29,7 @@ void print_gameboard()
 
 
 
-void pick_random_tile()
+void pick_random_tile(int gameboard[n][n])
 {
     //int empty[n][2];
 
@@ -53,7 +55,7 @@ void pick_random_tile()
             }
             if(gameboard[j][i] == 2048)
             {
-                print_gameboard();
+                print_gameboard(gameboard);
                 printf("wow you win!!1!\nending game..\n");
                 exit(0);
             }
@@ -83,7 +85,7 @@ void pick_random_tile()
     //}
 }
 
-void slam_left()
+void slam_left(int gameboard[n][n])
 {
     for (int j = 0; j < n; j++)
     {
@@ -101,7 +103,7 @@ void slam_left()
     }
 }
 
-void compress_left()
+void compress_left(int gameboard[n][n])
 {
     for(int j = 0; j < n; j++)
     {
@@ -116,7 +118,7 @@ void compress_left()
     }
 }
 
-void transpose()
+void transpose(int gameboard[n][n])
 {
     int interim_gameboard[n][n]; 
     for (int j = 0; j < n; j++)
@@ -130,7 +132,7 @@ void transpose()
     //gameboard =  *interim_gameboard;
 }
 
-void reverse()
+void reverse(int gameboard[n][n])
 {
     for (int j = 0; j < n; j++)
     {
@@ -143,42 +145,42 @@ void reverse()
     }
 }
 
-void raw_move_left()
+void raw_move_left(int gameboard[n][n])
 {
-    slam_left();
-    compress_left();
-    slam_left();
+    slam_left(gameboard);
+    compress_left(gameboard);
+    slam_left(gameboard);
 }
 
-void move_left()
+void move_left(int gameboard[n][n])
 {
-    raw_move_left();
+    raw_move_left(gameboard);
 }
 
-void move_up()
+void move_up(int gameboard[n][n])
 {
-    transpose();
-    raw_move_left();
-    transpose();
+    transpose(gameboard);
+    raw_move_left(gameboard);
+    transpose(gameboard);
 }
 
-void move_down()
+void move_down(int gameboard[n][n])
 {
-    transpose();
-    reverse();
-    raw_move_left();
-    reverse();
-    transpose();
+    transpose(gameboard);
+    reverse(gameboard);
+    raw_move_left(gameboard);
+    reverse(gameboard);
+    transpose(gameboard);
 }
 
-void move_right()
+void move_right(int gameboard[n][n])
 {
-    reverse();
-    raw_move_left();
-    reverse();
+    reverse(gameboard);
+    raw_move_left(gameboard);
+    reverse(gameboard);
 }
 
-void game_loop()
+void game_loop(int gameboard[n][n])
 {
     int i = 1;
     while(i == 1)
@@ -191,31 +193,31 @@ void game_loop()
         switch (c)
         {
         case 'a':
-            move_left();
+            move_left(gameboard);
             break;
 
         case 's':
-            move_down();
+            move_down(gameboard);
             break;
 
         case 'd':
-            move_right();
+            move_right(gameboard);
             break;
 
         case 'w':
-            move_up();
+            move_up(gameboard);
             break;
 
         default:
             break;
         }
-        pick_random_tile();
+        pick_random_tile(gameboard);
 
-        print_gameboard();
+        print_gameboard(gameboard);
     }
 }
 
-/* Start of the application */
+/* Start of the application 
 int main()
 {
     srand(time(0));
@@ -229,3 +231,5 @@ int main()
 
     game_loop();
 }
+
+*/
