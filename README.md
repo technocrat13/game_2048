@@ -13,5 +13,5 @@
 
 	```bash
 	make
-  make run
+  	make run
 	```
