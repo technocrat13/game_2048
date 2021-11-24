@@ -4,7 +4,7 @@
 
 void setup_gameboard(int gameboard[n][n])
 {
-    srand(time(0));
+    //srand(time(0));
     for (int j = 0; j < n; j++)
     {
         for (int i = 0; i < n; i++)

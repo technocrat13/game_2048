@@ -305,7 +305,7 @@ void test_pick_random_tile(void)
   {
     for(int i = 0; i < 4; i++)
     {
-      if(new_gameboard[j][i] == 2 || new_gameboard[j][i] == 2)
+      if(new_gameboard[j][i] == 2 || new_gameboard[j][i] == 4)
       {
         result = 1;
         //print_gameboard(new_gameboard);

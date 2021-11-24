@@ -1,0 +1,330 @@
+        -:    0:Source:src/gameboard_operations.c
+        -:    0:Graph:gameboard_operations.gcno
+        -:    0:Data:gameboard_operations.gcda
+        -:    0:Runs:1
+        -:    1:#include "gameboard_operations.h"
+        -:    2:
+        -:    3:
+        -:    4:
+        1:    5:void setup_gameboard(int gameboard[n][n])
+        -:    6:{
+        1:    7:    srand(time(0));
+        1:    7-block  0
+        5:    8:    for (int j = 0; j < n; j++)
+        4:    8-block  0
+        5:    8-block  1
+        -:    9:    {
+       20:   10:        for (int i = 0; i < n; i++)
+        4:   10-block  0
+       20:   10-block  1
+        -:   11:        {
+       16:   12:            gameboard[j][i] = 0;
+       16:   12-block  0
+        -:   13:        }
+        -:   14:    }
+        -:   15:    
+        -:   16:
+        -:   17:    //pos_t* empty_places = (pos_t*) malloc(n * n * sizeof(pos_t));
+        -:   18:    //int* ptr;
+        -:   19:    //ptr = (int*) calloc(n, sizeof(int[n]));
+        -:   20:    //gameboard =  ptr;
+        1:   21:}
+        -:   22:
+    #####:   23:void print_gameboard(int gameboard[n][n])
+        -:   24:{
+    #####:   25:    printf("\n");
+    %%%%%:   25-block  0
+    #####:   26:    for (int j = 0; j < n; j++)
+    %%%%%:   26-block  0
+        -:   27:    {
+    #####:   28:        printf("       ");
+    %%%%%:   28-block  0
+    #####:   29:        for (int i = 0; i < n; i++)
+    %%%%%:   29-block  0
+        -:   30:        {
+    #####:   31:            printf("%d ", gameboard[j][i]);
+    %%%%%:   31-block  0
+        -:   32:        }
+    #####:   33:        printf("\n");
+    %%%%%:   33-block  0
+        -:   34:    }
+    #####:   35:}
+        -:   36:
+        -:   37:
+        -:   38:
+        1:   39:void pick_random_tile(int gameboard[n][n])
+        -:   40:{
+        -:   41:    //int empty[n][2];
+        -:   42:
+        1:   43:    pos_t* empty_places = (pos_t*) malloc(n * n * sizeof(pos_t));
+        1:   44:    if (empty_places == NULL) {
+        1:   44-block  0
+    #####:   45:        printf("Memory not allocated.\n");
+    %%%%%:   45-block  0
+    #####:   46:        exit(0);
+        -:   47:    }
+        -:   48:    //find all 0s
+        -:   49:    //when a new one is added remove it from memory and 
+        1:   50:    int count = 0;
+        5:   51:    for(int j = 0; j < n; j++)
+        1:   51-block  0
+        4:   51-block  1
+        5:   51-block  2
+        -:   52:    {
+       20:   53:        for(int i = 0; i < n; i++)
+        4:   53-block  0
+       16:   53-block  1
+       20:   53-block  2
+        -:   54:        {
+       16:   55:            if(gameboard[j][i] == 0)
+       16:   55-block  0
+        -:   56:            {
+       16:   57:                pos_t interim = {j, i};
+        -:   58:                //interim.x = i;
+        -:   59:                //interim.y = j;
+       16:   60:                empty_places[count] = interim;
+       16:   61:                ++count;
+       16:   61-block  0
+        -:   62:            }
+        -:   63:            /*
+        -:   64:            if(gameboard[j][i] == 2048)
+        -:   65:            {
+        -:   66:                print_gameboard(gameboard);
+        -:   67:                printf("wow you win!!1!\nending game..\n");
+        -:   68:                exit(0);
+        -:   69:            
+        -:   70:            }
+        -:   71:            */
+        -:   72:        }
+        -:   73:    }
+        -:   74:
+        1:   75:    if(count != 0)
+        1:   75-block  0
+        -:   76:    {
+        1:   77:    int place = rand() % count;
+        1:   77-block  0
+        -:   78:    //int i = rand() % 4;
+        -:   79:
+        1:   80:        if (rand() % 3 == 0)
+        -:   81:        {
+    #####:   82:            gameboard[empty_places[place].y][empty_places[place].x] = 4;
+    %%%%%:   82-block  0
+        -:   83:        }
+        -:   84:        else
+        -:   85:        {
+        1:   86:            gameboard[empty_places[place].y][empty_places[place].x] = 2;
+        1:   86-block  0
+        -:   87:        }
+        -:   88:
+        -:   89:    } 
+        -:   90:    
+        -:   91:
+        1:   92:    free(empty_places);
+        -:   93:    
+        -:   94:    //if (rand() % 4 == 0)
+        -:   95:    //{
+        -:   96:    //    pick_random_tile();
+        -:   97:    //}
+        -:   98:    
+        1:   99:}
+        -:  100:
+        -:  101:
+       11:  102:void slam_left(int gameboard[n][n])
+        -:  103:{
+       55:  104:    for (int j = 0; j < n; j++)
+       11:  104-block  0
+       44:  104-block  1
+       55:  104-block  2
+        -:  105:    {
+      176:  106:        for (int t = 0; t < n - 1; t++)
+       44:  106-block  0
+      132:  106-block  1
+      176:  106-block  2
+        -:  107:        {
+      528:  108:            for (int i = 0; i < n - 1; i++)
+      132:  108-block  0
+      396:  108-block  1
+      528:  108-block  2
+        -:  109:            {
+      396:  110:                if(gameboard[j][i] == 0)
+      396:  110-block  0
+        -:  111:                {
+      217:  112:                    gameboard[j][i] = gameboard[j][i + 1];
+      217:  113:                    gameboard[j][i + 1] = 0;
+      217:  113-block  0
+        -:  114:                }
+        -:  115:            }
+        -:  116:        }
+        -:  117:    }
+       11:  118:}
+        -:  119:
+        6:  120:void compress_left(int gameboard[n][n])
+        -:  121:{
+       30:  122:    for(int j = 0; j < n; j++)
+        6:  122-block  0
+       24:  122-block  1
+       30:  122-block  2
+        -:  123:    {
+       96:  124:        for(int i = 0; i < n -1; i++)
+       24:  124-block  0
+       72:  124-block  1
+       96:  124-block  2
+        -:  125:        {
+       72:  126:            if(gameboard[j][i] != 0 && gameboard[j][i] == gameboard[j][i + 1])
+       72:  126-block  0
+       34:  126-block  1
+        -:  127:            {
+       14:  128:                gameboard[j][i] = gameboard[j][i] * 2;
+       14:  129:                gameboard[j][i + 1] = 0;
+       14:  129-block  0
+        -:  130:            }
+        -:  131:        }
+        -:  132:    }
+        6:  133:}
+        -:  134:
+        5:  135:void transpose(int gameboard[n][n])
+        -:  136:{
+        -:  137:    int interim_gameboard[n][n]; 
+       25:  138:    for (int j = 0; j < n; j++)
+        5:  138-block  0
+       20:  138-block  1
+       25:  138-block  2
+        -:  139:    {
+      100:  140:        for (int i = 0; i < n; i++)
+       20:  140-block  0
+      100:  140-block  1
+        -:  141:        {
+       80:  142:            interim_gameboard[i][j] = gameboard[j][i];
+       80:  142-block  0
+        -:  143:        }
+        -:  144:    }
+        5:  145:    memcpy(&gameboard[0][0], &interim_gameboard[0][0], n * n * sizeof(interim_gameboard[0][0]));
+        -:  146:    //gameboard =  *interim_gameboard;
+        5:  147:}
+        -:  148:
+        5:  149:void reverse(int gameboard[n][n])
+        -:  150:{
+       25:  151:    for (int j = 0; j < n; j++)
+        5:  151-block  0
+       20:  151-block  1
+       25:  151-block  2
+        -:  152:    {
+       60:  153:        for (int i = 0; i < n / 2; i++)
+       20:  153-block  0
+       60:  153-block  1
+        -:  154:        {
+       40:  155:            int temp = gameboard[j][i];
+       40:  156:            gameboard[j][i] = gameboard[j][n - i - 1];
+       40:  157:            gameboard[j][n - i - 1] = temp;
+       40:  157-block  0
+        -:  158:        }
+        -:  159:    }
+        5:  160:}
+        -:  161:
+        5:  162:void raw_move_left(int gameboard[n][n])
+        -:  163:{
+        5:  164:    slam_left(gameboard);
+        5:  164-block  0
+        5:  165:    compress_left(gameboard);
+        5:  166:    slam_left(gameboard);
+        5:  167:}
+        -:  168:
+        1:  169:void move_left(int gameboard[n][n])
+        -:  170:{
+        1:  171:    raw_move_left(gameboard);
+        1:  171-block  0
+        1:  172:}
+        -:  173:
+        1:  174:void move_up(int gameboard[n][n])
+        -:  175:{
+        1:  176:    transpose(gameboard);
+        1:  176-block  0
+        1:  177:    raw_move_left(gameboard);
+        1:  178:    transpose(gameboard);
+        1:  179:}
+        -:  180:
+        1:  181:void move_down(int gameboard[n][n])
+        -:  182:{
+        1:  183:    transpose(gameboard);
+        1:  183-block  0
+        1:  184:    reverse(gameboard);
+        1:  185:    raw_move_left(gameboard);
+        1:  186:    reverse(gameboard);
+        1:  187:    transpose(gameboard);
+        1:  188:}
+        -:  189:
+        1:  190:void move_right(int gameboard[n][n])
+        -:  191:{
+        1:  192:    reverse(gameboard);
+        1:  192-block  0
+        1:  193:    raw_move_left(gameboard);
+        1:  194:    reverse(gameboard);
+        1:  195:}
+        -:  196:
+    #####:  197:void game_loop(int gameboard[n][n])
+        -:  198:{
+    #####:  199:    int i = 1;
+    #####:  200:    printf("[wasd] and press enter, [c] to stop: ");
+    %%%%%:  200-block  0
+    #####:  201:    while(i == 1)
+    %%%%%:  201-block  0
+        -:  202:    {
+        -:  203:        //print_gameboard();
+        -:  204:        char c;
+    #####:  205:        printf("[wasd]: ");
+    %%%%%:  205-block  0
+    #####:  206:        scanf(" %c", &c);
+        -:  207:
+    #####:  208:        switch (c)
+        -:  209:        {
+    #####:  210:        case 'a':
+    #####:  211:            move_left(gameboard);
+    %%%%%:  211-block  0
+    #####:  212:            break;
+        -:  213:
+    #####:  214:        case 's':
+    #####:  215:            move_down(gameboard);
+    %%%%%:  215-block  0
+    #####:  216:            break;
+        -:  217:
+    #####:  218:        case 'd':
+    #####:  219:            move_right(gameboard);
+    %%%%%:  219-block  0
+    #####:  220:            break;
+        -:  221:
+    #####:  222:        case 'w':
+    #####:  223:            move_up(gameboard);
+    %%%%%:  223-block  0
+    #####:  224:            break;
+        -:  225:
+    #####:  226:        case 'c':
+    #####:  227:            i = 0;
+    #####:  228:            break;
+    %%%%%:  228-block  0
+    #####:  229:        default:
+    #####:  230:            break;
+    %%%%%:  230-block  0
+        -:  231:        }
+    #####:  232:        pick_random_tile(gameboard);
+    %%%%%:  232-block  0
+        -:  233:
+    #####:  234:        print_gameboard(gameboard);
+        -:  235:    }
+    #####:  236:}
+        -:  237:
+        -:  238:/* Start of the application 
+        -:  239:int main()
+        -:  240:{
+        -:  241:    srand(time(0));
+        -:  242:    printf("\n****2048****\n");
+        -:  243:
+        -:  244:    setup_gameboard();
+        -:  245:    
+        -:  246:    pick_random_tile();
+        -:  247:    print_gameboard();
+        -:  248:
+        -:  249:
+        -:  250:    game_loop();
+        -:  251:}
+        -:  252:
+        -:  253:*/
