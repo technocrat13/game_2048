@@ -15,6 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: apt install dependency
+      run: |
+        sudo apt-get -y install gcc
     - name: make test
       run: |
         make test -C 3_Implementation/
