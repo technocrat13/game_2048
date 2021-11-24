@@ -12,6 +12,7 @@
 * To play a game of 2048 in your console:
 
 	```bash
+	cd 3_Implementation
 	make
   	make run
 	```
