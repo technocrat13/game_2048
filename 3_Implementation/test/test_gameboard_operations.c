@@ -308,7 +308,7 @@ void test_pick_random_tile(void)
       if(new_gameboard[j][i] == 2 || new_gameboard[j][i] == 4)
       {
         result = 1;
-        //print_gameboard(new_gameboard);
+        print_gameboard(new_gameboard);
 
         break;
       }
