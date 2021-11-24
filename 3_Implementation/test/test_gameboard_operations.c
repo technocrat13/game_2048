@@ -1,8 +1,8 @@
 #include "unity.h"
-#include <gameboard_operations.h>
+#include "gameboard_operations.h"
 
 /* Modify these two lines according to the project */
-#include <gameboard_operations.h>
+//#include <gameboard_operations.h>
 #define PROJECT_NAME "2048"
 
 /* Prototypes for all the test functions */
@@ -16,7 +16,7 @@ void test_move_left(void);
 void test_move_up(void);
 void test_move_down(void);
 void test_move_right(void);
-//void test_move_left(void);
+void test_pick_random_tile(void);
 //void test_move_left(void);
 /*
 int gameboard[4][4] = {
@@ -38,6 +38,7 @@ int main()
   UNITY_BEGIN();
 
   /* Run Test functions */
+
   RUN_TEST(test_setup_gameboard);
   RUN_TEST(test_slam_left);
   RUN_TEST(test_compress_left);
@@ -48,6 +49,7 @@ int main()
   RUN_TEST(test_move_up);
   RUN_TEST(test_move_down);
   RUN_TEST(test_move_right);
+  RUN_TEST(test_pick_random_tile);
   //RUN_TEST();
 
   /* Close the Unity Test Framework */
@@ -61,6 +63,7 @@ void test_setup_gameboard(void)
 {
   int new_gameboard[n][n];
   setup_gameboard(new_gameboard);
+  //print_gameboard(new_gameboard);
 
   int test_gameboard[4][4] = {
       {0, 0, 0, 0},
@@ -284,4 +287,35 @@ void test_move_down(void)
   int result = memcmp(new_gameboard, test_gameboard, 16);
 
   TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_pick_random_tile(void)
+{
+  int new_gameboard[4][4] = {
+      {0, 0, 0, 0},
+      {0, 0, 0, 0},
+      {0, 0, 0, 0},
+      {0, 0, 0, 0}};
+
+  pick_random_tile(new_gameboard);
+  //print_gameboard(new_gameboard);
+
+  int result = 0;
+  for(int j = 0; j < 4; j++)
+  {
+    for(int i = 0; i < 4; i++)
+    {
+      if(new_gameboard[j][i] == 2 || new_gameboard[j][i] == 2)
+      {
+        result = 1;
+        //print_gameboard(new_gameboard);
+
+        break;
+      }
+    }
+
+    
+  }
+  TEST_ASSERT_EQUAL(1, result);
+
 }

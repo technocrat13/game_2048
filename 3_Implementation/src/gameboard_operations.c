@@ -4,6 +4,7 @@
 
 void setup_gameboard(int gameboard[n][n])
 {
+    srand(time(0));
     for (int j = 0; j < n; j++)
     {
         for (int i = 0; i < n; i++)
@@ -11,6 +12,12 @@ void setup_gameboard(int gameboard[n][n])
             gameboard[j][i] = 0;
         }
     }
+    
+
+    //pos_t* empty_places = (pos_t*) malloc(n * n * sizeof(pos_t));
+    //int* ptr;
+    //ptr = (int*) calloc(n, sizeof(int[n]));
+    //gameboard =  ptr;
 }
 
 void print_gameboard(int gameboard[n][n])

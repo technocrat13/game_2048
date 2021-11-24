@@ -64,9 +64,9 @@ sanitize_check:
 	./$(TEST_OUTPUT)
 
 coverage:$(TEST_SRC)
-	gcc -fprofile-arcs -ftest-coverage $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
+	gcc -fprofile-arcs -ftest-coverage $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
 	./$(TEST_OUTPUT)
-	gcov -a calculator_operations.c
+	gcov -a gameboard_operations.c
 
 # Remove all the built files, invoke by `make clean`
 clean:

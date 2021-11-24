@@ -3,7 +3,7 @@
 /* Start of the application */
 int main()
 {
-    srand(time(0));
+    //srand(time(0));
     printf("\n****2048****\n");
     int gameboard[n][n];
     setup_gameboard(gameboard);
