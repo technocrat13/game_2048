@@ -190,6 +190,7 @@ void move_right(int gameboard[n][n])
 void game_loop(int gameboard[n][n])
 {
     int i = 1;
+    printf("[wasd] and press enter, [c] to stop: ");
     while(i == 1)
     {
         //print_gameboard();
@@ -215,6 +216,9 @@ void game_loop(int gameboard[n][n])
             move_up(gameboard);
             break;
 
+        case 'c':
+            i = 0;
+            break;
         default:
             break;
         }
