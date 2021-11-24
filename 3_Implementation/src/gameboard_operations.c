@@ -197,7 +197,7 @@ void move_right(int gameboard[n][n])
 void game_loop(int gameboard[n][n])
 {
     int i = 1;
-    printf("[wasd] and press enter, [c] to stop: ");
+    printf("[wasd] and press enter, [c] to stop\n");
     while(i == 1)
     {
         //print_gameboard();
